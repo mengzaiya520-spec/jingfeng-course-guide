@@ -1273,6 +1273,105 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
     background:linear-gradient(180deg,rgba(251,250,246,0),rgba(251,250,246,.35));pointer-events:none}
 }
 
+
+/* ==================== 移动端适配：字号 / 间距 / 组件 ==================== */
+@media (max-width:760px){
+  /* 段落节奏：上下留白 34 → 26 */
+  .sec{padding:26px 0}
+
+  /* 首屏 */
+  .h1{font-size:34px;letter-spacing:.03em;line-height:1.14}
+  .h2{font-size:16px;letter-spacing:.16em;margin-top:12px}
+  .lead{font-size:14.5px;line-height:1.85;margin-top:13px}
+  .cell{padding:15px 16px}
+  .cell .v{font-size:17px;line-height:1.35}
+  .cell .v.sm{font-size:15px;line-height:1.45}
+  .cell .tm{font-size:12px;margin-top:5px}
+  .cell .n{font-size:11.5px;margin-top:5px}
+  .cell .n.nb2{font-size:11px}
+
+  /* 01 书封：横排 + 说明与提示不再逐字断行 */
+  .bkrow{gap:12px}
+  .bk img{height:76px}
+  .bktx{margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:5px 10px}
+  .bktx em{font-size:11.5px;line-height:1.65}
+  .bktx i{font-size:11px;white-space:nowrap}
+
+  /* 02 对比表：标签与文字同排，换行后对齐，消除末行孤字 */
+  .cmprow{padding:14px 0}
+  .cmprow .dim{font-size:12px;margin-bottom:8px}
+  .cmprow .old,.cmprow .new{display:flex;align-items:flex-start;gap:7px;line-height:1.62}
+  .cmprow .old::before,.cmprow .new::before{flex:none;margin:2px 0 0}
+  .cmprow .old{font-size:13.5px;margin-top:0}
+  .cmprow .new{font-size:14px;margin-top:6px}
+
+  /* 03 大纲 */
+  .tr{padding:13px 12px}
+  .tr .stage{font-size:17px}
+  .tr .q{font-size:14px;line-height:1.6}
+
+  /* 04 企业资料 / 温馨提示 */
+  .pdi span{font-size:12.5px;line-height:1.75}
+  .pdh h4{font-size:13.5px}
+  .tiptx{font-size:12.5px;line-height:1.65}
+
+  /* 05 路线：就餐住宿清单 */
+  .way{padding:12px 14px}
+  .ways p{font-size:13.5px}
+  .nb li{padding:7px 0;grid-template-columns:96px minmax(0,1fr);gap:10px}
+  .nb li b{font-size:13px}
+  .nb li span{font-size:12.5px;line-height:1.6}
+  .nbnote{font-size:12px;line-height:1.7}
+
+  /* 06 关于 + 页脚 */
+  .abt{font-size:16px}
+  .abd{font-size:12.5px;line-height:1.85}
+  .fqr span{font-size:11.5px}
+  .fqr img{width:96px;height:96px}
+  .fqrs{gap:14px}
+}
+
+@media (max-width:420px){
+  .h1{font-size:31px}
+  .cell{padding:14px 14px}
+}
+
+
+/* ==================== 横向滚动兜底 ==================== */
+html,body{overflow-x:hidden}
+
+/* ==================== 01 书封列：放大 + 居中分布 ==================== */
+@media (min-width:1001px){
+  .teacher{grid-template-columns:minmax(0,1fr) 266px;column-gap:38px;align-items:stretch}
+  .teacher .works{height:100%;display:flex;flex-direction:column;justify-content:center;margin-top:0;padding:0;border:0}
+  .teacher .bkrow{gap:10px;align-items:flex-start}
+  .teacher .bk img{height:104px;border-radius:3px 4px 4px 3px}
+  .teacher .bk .bkp{margin-top:8px;font-size:10.5px}
+  .teacher .bktx{margin-top:16px}
+  .teacher .bktx em{font-size:12px;line-height:1.75;color:#5F5850;display:block}
+  .teacher .bktx i{margin-top:8px;font-size:11px}
+}
+
+/* ==================== 地图导航选择层 ==================== */
+.btnsq{font-style:normal;font-size:14px;margin-left:8px;opacity:.9}
+.mapsheet{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center}
+.mapsheet[hidden]{display:none}
+.msmask{position:absolute;inset:0;background:rgba(30,25,21,.42)}
+.mscard{position:relative;width:100%;max-width:520px;background:#FFFDF8;
+  border-radius:14px 14px 0 0;padding:18px 16px calc(16px + env(safe-area-inset-bottom));
+  box-shadow:0 -12px 40px -20px rgba(35,29,25,.4);animation:msup .26s cubic-bezier(.22,.7,.3,1)}
+@keyframes msup{from{transform:translateY(18px);opacity:.6}to{transform:none;opacity:1}}
+.mstitle{font-size:12px;color:#8C857B;letter-spacing:.14em;text-align:center;margin-bottom:14px}
+.msitem{display:block;text-align:center;padding:14px 0;font-size:16px;color:#2B2320;text-decoration:none;
+  border:1px solid #E7DFD0;border-radius:8px;margin-bottom:10px;background:#FBF8F0;font-weight:500}
+.msitem:active{background:#F5EFE2}
+.mscancel{display:block;width:100%;padding:13px 0;font-size:15px;color:#8C857B;background:none;border:0;
+  border-top:1px solid #EEE7D9;margin-top:4px}
+@media (min-width:761px){
+  .mapsheet{align-items:center}
+  .mscard{border-radius:14px;max-width:360px;padding:20px 20px 16px}
+}
+
 </style>
 <style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
 <body data-page-node-id="IEHBGbb3Oz6XO9Qk3Wmw5F" style="">
@@ -1366,9 +1465,8 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
             <span class="bkp" data-page-node-id="ctjHxPQ0CqTNABHNEv5Lit">¥59.9</span>
           </button>
         </div>
-        <div class="bktx" data-page-node-id="p50ZntJAU42mIOYvLebLMD">
-          <em data-page-node-id="pPbk1tUKaxSKGMlG2Zton1">著有《道商》《商业决策力》《H2O 水分子组织模型》三部商业实战著作。</em>
-          <i data-page-node-id="nGqsMkgVXGGurJpnwpEaJg">点击封面 · 扫码购书</i>
+        <div class="bktx">
+          <em>三部商业实战著作 · 点击封面扫码购买</em>
         </div>
       </div>
     </div>
@@ -1568,10 +1666,7 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
           <span class="mcredit" data-page-node-id="mclkCXSfshsI1kCn43Yy1q">底图数据 OpenStreetMap</span>
           <span class="mcomp" aria-hidden="true" data-page-node-id="771bpGfA2deHZOsdxJG1Xo"><svg viewBox="0 0 12 18" xmlns="http://www.w3.org/2000/svg" data-page-node-id="vRT9oU8aYBiSy1Gaa6PMFh"><path d="M6 1L11 13H6.8L6 17L5.2 13H1L6 1Z" fill="#2B2320" data-page-node-id="zklcovlJP4iKsfHnvlJpnm"></path></svg></span>
         </div>
-          <a class="btn btnwide" href="https://uri.amap.com/marker?position=113.36213,23.13314&amp;name=%E6%99%AF%E5%B3%B0%E5%95%86%E5%AD%A6%E9%99%A2" target="_blank" rel="noopener" data-page-node-id="zQjrGqy3F0inDIShgExM0e">
-          在地图中打开导航
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" data-page-node-id="vK4bcr13sAnIDkVMSk5VdO"><path d="M3 11L11 3M11 3H5M11 3v6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="bBW1cE5hfXtfNTcrJFCrlA"></path></svg>
-        </a>
+          <button class="btn btnwide" type="button" id="mapbtn">在地图中打开导航<i class="btnsq" aria-hidden="true">↗</i></button>
         </div>
 
         
@@ -1848,4 +1943,26 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
 
 
 
+
+<div class="mapsheet" id="mapsheet" hidden>
+  <div class="msmask" data-close></div>
+  <div class="mscard">
+    <div class="mstitle">选择地图打开</div>
+    <a class="msitem" target="_blank" rel="noopener"
+       href="https://uri.amap.com/marker?position=113.36213,23.13314&name=%E6%99%AF%E5%B3%B0%E5%95%86%E5%AD%A6%E9%99%A2&src=jingfeng&coordinate=gaode&callnative=1">高德地图</a>
+    <a class="msitem" target="_blank" rel="noopener"
+       href="https://apis.map.qq.com/uri/v1/marker?marker=coord:23.13314,113.36213;title:%E6%99%AF%E5%B3%B0%E5%95%86%E5%AD%A6%E9%99%A2;addr:%E5%A4%A9%E6%B2%B3%E5%8C%BA%E5%A4%A9%E5%BA%9C%E8%B7%AF309%E5%8F%B7&referer=jingfeng">腾讯地图</a>
+    <button class="mscancel" type="button" data-close>取消</button>
+  </div>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('mapbtn'), sheet=document.getElementById('mapsheet');
+  if(!btn||!sheet) return;
+  function open(){ sheet.hidden=false; document.body.style.overflow='hidden'; }
+  function close(){ sheet.hidden=true; document.body.style.overflow=''; }
+  btn.addEventListener('click', open);
+  sheet.addEventListener('click', function(e){ if(e.target.hasAttribute('data-close')) close(); });
+})();
+</script>
 </body></html>
