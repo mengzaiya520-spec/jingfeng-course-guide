@@ -1227,6 +1227,52 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
   .abflow{grid-template-columns:repeat(2,1fr)}
 }
 
+
+/* ==================== 01：书封移到正文右侧 ==================== */
+@media (min-width:1001px){
+  .teacher{display:grid;grid-template-columns:minmax(0,40em) 242px;column-gap:48px;
+           justify-content:space-between;align-items:start}
+  .tleft{min-width:0}
+  .teacher p{max-width:none}
+  .teacher .works{margin-top:0;padding:0;border:0;display:block}
+  .teacher .bkrow{gap:11px;align-items:flex-start}
+  .teacher .bk img{height:76px}
+  .teacher .bk .bkp{margin-top:7px;font-size:10px}
+  .teacher .bktx{display:block;margin-top:12px}
+  .teacher .bktx em{font-size:11px;line-height:1.72;margin-top:0;max-width:none}
+  .teacher .bktx i{margin-top:7px;font-size:10.5px}
+}
+
+/* ==================== 首屏人像：圆角 + 双层柔影 + 底边羽化 ==================== */
+@media (min-width:1001px){
+  .who img{border-radius:10px;border:1px solid #E7DFD0;
+           box-shadow:0 22px 44px -22px rgba(40,32,27,.34), 0 6px 16px -8px rgba(40,32,27,.16);
+           -webkit-mask-image:linear-gradient(180deg,#000 90%,rgba(0,0,0,.35) 100%);
+           mask-image:linear-gradient(180deg,#000 90%,rgba(0,0,0,.35) 100%)}
+  .board{box-shadow:0 18px 38px -30px rgba(40,32,27,.35)}
+  .who .cap{margin-top:18px;padding-top:14px}
+}
+
+
+/* 人像：阴影在外层、羽化在内层（mask 会把 box-shadow 一起淡化，必须分层） */
+@media (min-width:1001px){
+  .who .whoimg{display:block;position:relative;width:100%;height:0;flex:1 1 auto;min-height:220px;
+    border-radius:10px;border:1px solid #E7DFD0;overflow:hidden;
+    box-shadow:0 26px 52px -18px rgba(40,32,27,.42), 0 8px 18px -8px rgba(40,32,27,.2)}
+  .who .whoimg img{width:100%;height:100%;min-height:0;flex:none;object-fit:cover;object-position:50% 12%;
+    border:0;border-radius:0;box-shadow:none}
+  .who .whoimg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14%;
+    background:linear-gradient(180deg,rgba(251,250,246,0) 0%,rgba(251,250,246,.32) 60%,rgba(251,250,246,.62) 100%);
+    pointer-events:none}
+}
+@media (max-width:1000px){
+  .who .whoimg{display:block;position:relative;border-radius:10px;overflow:hidden;
+    box-shadow:0 16px 30px -18px rgba(40,32,27,.3)}
+  .who .whoimg img{width:100%;height:auto;display:block}
+  .who .whoimg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16%;
+    background:linear-gradient(180deg,rgba(251,250,246,0),rgba(251,250,246,.35));pointer-events:none}
+}
+
 </style>
 <style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
 <body data-page-node-id="IEHBGbb3Oz6XO9Qk3Wmw5F" style="">
@@ -1248,7 +1294,7 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
 <!-- 封面 -->
 <section class="wrap" data-page-node-id="0FsDCcks8fCFOOTZE6SXBH">
   <div class="cover" data-page-node-id="FE8jSSIYF7eynx7mb4SImA">
-    <div class="rv in" data-page-node-id="f3rfvCH1MuO7l7UCzIAlDb">
+    <div class="rv" data-page-node-id="f3rfvCH1MuO7l7UCzIAlDb">
       <div class="eyebrow" data-page-node-id="i8AYIuzB1HlY4kvx9DsJ4r">景峰商学院　·　企业家经营课程</div>
       <h1 class="h1" data-page-node-id="HqmapM21gyNQr2crFL4vxA">AI 商业决策力</h1>
       <div class="h2" data-page-node-id="V09YSH6qdE4ymUFVbMB7ml">高阶训练营　·　两天一晚</div>
@@ -1278,8 +1324,8 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
       
     </div>
 
-    <div class="who rv in" data-page-node-id="EbKgDTUUeS3kvvo1cawSeR">
-      <img src="讲师照.jpg" alt="周兆全 博士" data-page-node-id="NLZ9GJJqoV8ddeXy7rEcpa">
+    <div class="who rv" data-page-node-id="EbKgDTUUeS3kvvo1cawSeR">
+      <span class="whoimg"><img src="讲师照.jpg" alt="周兆全 博士" data-page-node-id="NLZ9GJJqoV8ddeXy7rEcpa"></span>
       <div class="cap" data-page-node-id="AbLiQWeawSDX99mBiVeGrB">
         <div class="nm" data-page-node-id="fkwJJPplxMdfQK90RpN82V">周兆全 博士</div>
         <div class="tt" data-page-node-id="xkVmZ6DGYhlnJpiHygz0t8">景峰商学院首席专家　·　主讲导师</div>
@@ -1294,13 +1340,16 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
 <!-- 01 主讲导师 -->
 <section class="wrap" id="s01" data-page-node-id="KJIkfQiP8ZbNijW9b2FnU6">
   <div class="sec" data-page-node-id="PUe3ZzN662K87JbohCTmU1">
-    <div class="seclabel rv in" data-page-node-id="oJpdk9TbOXhWP7JMOaMvNe"><div class="num" data-page-node-id="0UxEvBX53ZPAWvQL8Flyxv">01</div><h2 data-en="INSTRUCTOR" data-page-node-id="E5KQ9OuuoSH1erBmpFwyOw">主讲导师</h2></div>
-    <div class="teacher rv in" data-page-node-id="mickUwcULS9Se9gXEKFM36">
+    <div class="seclabel rv" data-page-node-id="oJpdk9TbOXhWP7JMOaMvNe"><div class="num" data-page-node-id="0UxEvBX53ZPAWvQL8Flyxv">01</div><h2 data-en="INSTRUCTOR" data-page-node-id="E5KQ9OuuoSH1erBmpFwyOw">主讲导师</h2></div>
+    <div class="teacher rv" data-page-node-id="mickUwcULS9Se9gXEKFM36">
+      <div class="tleft">
       <div class="nm" data-page-node-id="qab8yyGMi7u7GW1uIFWODx">周兆全<span class="suf" data-page-node-id="TunH0OFkDxscwLgZFJR7oQ">博士</span></div>
       <i class="tline" data-page-node-id="fFPLXo8SEQMZPOd6VITn6e"></i>
       <div class="tt" data-page-node-id="6vFXpZT6jgq0THRnRGy6Ce">景心科技创始人兼 CEO　·　中山大学校外导师　·　三力经营法创始人</div>
       <p data-page-node-id="xa9gMWdMtE9uSf75A2QPtN">华南理工大学博士、中山大学硕士。2008 年创立景心科技并任 CEO，2025 年参与创立乾纳书院并任董事长，投资参股企业 10 余家。</p>
       <p data-page-node-id="Y8AqZ1KxviGXW6XPG3CVns">负责上市公司经营管理，20 多年管理经验，获评广州市科技领军人物、广州市十年软件风云人物；兼任广东数字政府专家、中山大学校外导师、四川文化艺术学院特聘教授。</p>
+
+      </div>
 
       <div class="works" data-page-node-id="jFo00DHSdanLpQEwPT7uFE">
         <div class="bkrow" data-page-node-id="gpMWsY54yrYHxkaNMrP0Of">
@@ -1330,8 +1379,8 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
 <!-- 02 课程亮点 -->
 <section class="wrap" id="s02" data-page-node-id="XDv5yltsOaYruannmMTmqW">
   <div class="sec" data-page-node-id="etC2awNXpMt678SJjROWVs">
-    <div class="seclabel rv in" data-page-node-id="qfsqp8YEi0jqimZoPEWnG1"><div class="num" data-page-node-id="FYceb7cHbBVOOgvVFdgx8c">02</div><h2 data-en="HIGHLIGHTS" data-page-node-id="envPvWAiM30oEqrJjOLgFm">课程亮点</h2></div>
-    <div class="rv in" data-page-node-id="8ZO43xuXL54PGgkbRBcCAL">
+    <div class="seclabel rv" data-page-node-id="qfsqp8YEi0jqimZoPEWnG1"><div class="num" data-page-node-id="FYceb7cHbBVOOgvVFdgx8c">02</div><h2 data-en="HIGHLIGHTS" data-page-node-id="envPvWAiM30oEqrJjOLgFm">课程亮点</h2></div>
+    <div class="rv" data-page-node-id="8ZO43xuXL54PGgkbRBcCAL">
       <p class="intro q" data-page-node-id="ENlGcXAuPF0ERKqPh7EcM6">AI 时代，让商学从听懂走向会用；不是研究别人，而是研究自己的企业。</p>
       <div class="cmp" data-page-node-id="kIZsHRTWtlj1Ey2MY9cuhA">
         <div class="cmphead" data-page-node-id="7TUFGGKn181FBkmhHa3ljl"><span data-page-node-id="6399BWJgyIeW3OkH9VJEoq"></span><span data-page-node-id="R8J2hvdNG1USMCx0aNPgkh">常规商学</span><span data-page-node-id="ggOAKCKXkyTKU5PpIEbNnL">周博士 AI 商业决策力</span></div>
@@ -1367,8 +1416,8 @@ html.js .rv.in .pdcols>*,html.js .rv.in .cmp>*{opacity:1;transform:none}
 <!-- 03 课程大纲 -->
 <section class="wrap" id="s03" data-page-node-id="ejt0LATAyWCSHVPZlJbvpZ">
   <div class="sec" data-page-node-id="EuTsy3YzCx05wvNDL0jRL0">
-    <div class="seclabel rv in" data-page-node-id="IUyRLxVha1Cq6mRbO9hcGB"><div class="num" data-page-node-id="YuAh5BoGxrRlUcIzVJLTqn">03</div><h2 data-en="CURRICULUM" data-page-node-id="kRel0old0YtAfXy6poMWDh">课程大纲</h2></div>
-    <div class="tl rv in" data-page-node-id="iV7DYvQ4WRkVGdi2j7yrkS">
+    <div class="seclabel rv" data-page-node-id="IUyRLxVha1Cq6mRbO9hcGB"><div class="num" data-page-node-id="YuAh5BoGxrRlUcIzVJLTqn">03</div><h2 data-en="CURRICULUM" data-page-node-id="kRel0old0YtAfXy6poMWDh">课程大纲</h2></div>
+    <div class="tl rv" data-page-node-id="iV7DYvQ4WRkVGdi2j7yrkS">
       <div class="tlhead" data-page-node-id="JN7mtcXwoPNElFlKpnu3hs"><span data-page-node-id="3CKGCrjCd3ZCDDA3Isk2zo">DAY 1</span><span data-page-node-id="vYe3xKzAVOANw9Zbp1EmEp">11 月 12 日 · 周四</span></div>
       <div class="rule dark" data-page-node-id="JkEz6cIS3vn41nkwvbhYbE"></div>
       <div class="tr" style="--bar:#C6441A" data-page-node-id="zHZgdc0GccXDAVsauinQbt">
